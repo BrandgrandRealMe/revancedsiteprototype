@@ -2,6 +2,12 @@ const express = require("express");
 const app = express();
 const fs = require('fs');
 app.use(express.static("public"));
+
+// Defaults 
+app.get("/file/default.css", (request, response) => {
+  response.sendFile(__dirname + "/defaults/default.css");
+});
+
 // Home
 app.get("/", (request, response) => {
   response.sendFile(__dirname + "/pages/home/home.html");
@@ -12,6 +18,19 @@ app.get("/file/home.css", (request, response) => {
 app.get("/file/home.js", (request, response) => {
   response.sendFile(__dirname + "/pages/home/home.js");
 });
+
+// Home
+app.get("/about", (request, response) => {
+  response.sendFile(__dirname + "/pages/about/about.html");
+});
+app.get("/file/about.css", (request, response) => {
+  response.sendFile(__dirname + "/pages/about/about.css");
+});
+app.get("/file/about.js", (request, response) => {
+  response.sendFile(__dirname + "/pages/about/about.js");
+});
+
+
 
 // license
 app.get("/license", (request, response) => {
